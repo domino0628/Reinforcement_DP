@@ -1,0 +1,31 @@
+import sys
+from collections import deque
+
+input = sys.stdin.readline
+N = int(input())
+
+
+
+RGBlist = []
+ans = []
+for i in range(N):
+  RGBlist.append(list(map(int, input().split())))
+
+
+ans.append(RGBlist[0])
+
+for i in range(1,N):
+  temp1 = min(ans[i-1][2]+RGBlist[i][0],ans[i-1][1]+RGBlist[i][0])
+  temp2 = min(ans[i-1][2]+RGBlist[i][1],ans[i-1][0]+RGBlist[i][1])
+  temp3 = min(ans[i-1][1]+RGBlist[i][2],ans[i-1][0]+RGBlist[i][2])
+
+  ans.append([temp1,temp2,temp3])
+
+print(min(ans[-1]))
+
+
+
+  
+  
+  
+  
